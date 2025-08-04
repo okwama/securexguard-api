@@ -5,7 +5,9 @@
       "src": "api/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["src/**", "dist/**", "package.json", "tsconfig.json"]
+        "includeFiles": ["src/**", "dist/**", "package.json", "tsconfig.json"],
+        "maxDuration": 30,
+        "memory": 1024
       }
     }
   ],
@@ -19,12 +21,6 @@
       "dest": "/api/index.ts"
     }
   ],
-  "functions": {
-    "api/index.ts": {
-      "maxDuration": 30,
-      "memory": 1024
-    }
-  },
   "env": {
     "NODE_ENV": "production"
   },
