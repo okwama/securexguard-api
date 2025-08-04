@@ -11,7 +11,7 @@ export const getDatabaseConfig = (configService: ConfigService): TypeOrmModuleOp
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: false, // Disabled to protect existing data
   logging: false, // Disabled to show only custom payload logs
-  ssl: configService.get('NODE_ENV') === 'production' ? { rejectUnauthorized: false } : false,
+  ssl: false, // Disable SSL for Vercel deployment
   charset: 'utf8mb4',
   timezone: '+03:00', // Kenya time zone (UTC+3)
 }); 

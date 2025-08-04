@@ -23,7 +23,8 @@ async function bootstrap() {
       'ionic://localhost',
       'http://localhost',
       'https://securex-api.vercel.app',
-      'https://securex-api-git-main-okwamas-projects.vercel.app'
+      'https://securex-api-git-main-okwamas-projects.vercel.app',
+      'https://securexguard-ef1l25jex-okwamas-projects.vercel.app'
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -69,6 +70,16 @@ async function bootstrap() {
   await app.listen(port);
   console.log(`🚀 eGuard API is running on: http://localhost:${port}`);
   console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+  
+  return app;
 }
 
-bootstrap();
+// For Vercel deployment
+if (process.env.NODE_ENV === 'production') {
+  bootstrap();
+} else {
+  bootstrap();
+}
+
+// Export for Vercel
+export default bootstrap;
