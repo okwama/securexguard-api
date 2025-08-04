@@ -1,0 +1,29 @@
+# Database Configuration
+DB_HOST=102.130.125.52
+DB_PORT=3306
+DB_USERNAME=impulsep_root
+DB_PASSWORD=@bo9511221.qwerty
+DB_DATABASE=impulsep_securex
+
+# JWT Configuration
+JWT_SECRET=your-super-secret-jwt-key-here-make-it-long-and-random
+JWT_EXPIRES_IN=5h
+
+# Server Configuration
+PORT=5000
+NODE_ENV=production
+
+# CORS Configuration - Add your Flutter app domains
+CORS_ORIGIN=https://eguard-guards.vercel.app,https://eguard-securex.vercel.app
+
+# Cloudinary Configuration (if using file uploads)
+CLOUDINARY_CLOUD_NAME=your-cloud-name
+CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
+
+# API Configuration
+API_PREFIX=api
+
+# Vercel Specific
+VERCEL_REGION=iad1
+VERCEL_FUNCTION_TIMEOUT=30 

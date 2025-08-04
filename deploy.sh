@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# eGuard API - Vercel Deployment Script
-
-echo "🚀 Starting eGuard API deployment to Vercel..."
+echo "🚀 Deploying eGuard API to Vercel..."
 
 # Check if Vercel CLI is installed
 if ! command -v vercel &> /dev/null; then
@@ -10,20 +8,26 @@ if ! command -v vercel &> /dev/null; then
     npm install -g vercel
 fi
 
-# Check if user is logged in to Vercel
+# Check if logged in to Vercel
 if ! vercel whoami &> /dev/null; then
     echo "🔐 Please login to Vercel..."
     vercel login
 fi
 
 # Build the project
-echo "🔨 Building project..."
+echo "📦 Building project..."
 npm run build
+
+# Check if build was successful
+if [ $? -ne 0 ]; then
+    echo "❌ Build failed!"
+    exit 1
+fi
 
 # Deploy to Vercel
 echo "🚀 Deploying to Vercel..."
 vercel --prod
 
-echo "✅ Deployment completed!"
-echo "📚 API Documentation: https://your-app.vercel.app/api/docs"
-echo "🔍 Health Check: https://your-app.vercel.app/api" 
+echo "✅ Deployment complete!"
+echo "📱 Update your Flutter apps with the new API URL:"
+echo "   https://eguard-api.vercel.app" 
