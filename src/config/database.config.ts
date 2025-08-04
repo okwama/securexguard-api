@@ -8,7 +8,7 @@ export const getDatabaseConfig = (configService: ConfigService): TypeOrmModuleOp
   username: configService.get('DB_USERNAME', 'impulsep_root'),
   password: configService.get('DB_PASSWORD', '@bo9511221.qwerty'),
   database: configService.get('DB_DATABASE', 'impulsep_securex'),
-cler  entities: [__dirname + '/../**/*.entity.js'],
+  entities: [__dirname + '/../**/*.entity.js'],
   synchronize: false, // Disabled to protect existing data
   logging: false, // Disabled to show only custom payload logs
   ssl: false, // Disable SSL for Vercel deployment
