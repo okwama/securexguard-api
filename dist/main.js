@@ -18,7 +18,8 @@ async function bootstrap() {
             'ionic://localhost',
             'http://localhost',
             'https://securex-api.vercel.app',
-            'https://securex-api-git-main-okwamas-projects.vercel.app'
+            'https://securex-api-git-main-okwamas-projects.vercel.app',
+            'https://securexguard-ef1l25jex-okwamas-projects.vercel.app'
         ],
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -51,9 +52,16 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/docs', app, document);
     const port = process.env.PORT || 5000;
-    await app.listen(port);
-    console.log(`🚀 eGuard API is running on: http://localhost:${port}`);
-    console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+    if (process.env.NODE_ENV !== 'production') {
+        await app.listen(port);
+        console.log(`🚀 eGuard API is running on: http://localhost:${port}`);
+        console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+    }
+    else {
+        console.log('🚀 eGuard API is running in production mode (Vercel)');
+    }
+    return app;
 }
 bootstrap();
+exports.default = bootstrap;
 //# sourceMappingURL=main.js.map

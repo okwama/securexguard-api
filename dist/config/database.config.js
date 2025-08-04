@@ -11,7 +11,7 @@ const getDatabaseConfig = (configService) => ({
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: false,
     logging: false,
-    ssl: configService.get('NODE_ENV') === 'production' ? { rejectUnauthorized: false } : false,
+    ssl: false,
     charset: 'utf8mb4',
     timezone: '+03:00',
 });
