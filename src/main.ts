@@ -67,19 +67,22 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   const port = process.env.PORT || 5000;
-  await app.listen(port);
-  console.log(`🚀 eGuard API is running on: http://localhost:${port}`);
-  console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+  
+  // Only listen on port in development environment
+  // In production (Vercel), the serverless function handles the listening
+  if (process.env.NODE_ENV !== 'production') {
+    await app.listen(port);
+    console.log(`🚀 eGuard API is running on: http://localhost:${port}`);
+    console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+  } else {
+    console.log('🚀 eGuard API is running in production mode (Vercel)');
+  }
   
   return app;
 }
 
-// For Vercel deployment
-if (process.env.NODE_ENV === 'production') {
-  bootstrap();
-} else {
-  bootstrap();
-}
+// Start the application
+bootstrap();
 
 // Export for Vercel
 export default bootstrap;
