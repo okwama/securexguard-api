@@ -8,7 +8,7 @@ const getDatabaseConfig = (configService) => ({
     username: configService.get('DB_USERNAME', 'impulsep_root'),
     password: configService.get('DB_PASSWORD', '@bo9511221.qwerty'),
     database: configService.get('DB_DATABASE', 'impulsep_securex'),
-    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+    entities: [__dirname + '/../**/*.entity.js'],
     synchronize: false,
     logging: false,
     ssl: false,
